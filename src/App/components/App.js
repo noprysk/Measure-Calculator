@@ -14,12 +14,6 @@ class App extends Component {
             <Panel header="Temperature conversion" key="1">
                 <Temperature />
             </Panel>
-            <Panel header="Test 2" key="2">
-                test 2
-            </Panel>
-            <Panel header="Test 3" key="3">
-                test 3
-            </Panel>
         </Collapse>
     );
   }
