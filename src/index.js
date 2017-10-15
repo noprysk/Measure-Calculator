@@ -10,5 +10,8 @@ ReactDOM.render(
     <LocaleProvider locale={enUS}>
         <App />
     </LocaleProvider>,
-    document.getElementById('root'));
+
+    document.getElementById('root')
+);
+
 registerServiceWorker();

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Input } from 'antd';
-import { Select } from 'antd';
-import { Row, Col } from 'antd';
+import { InputNumber, Select, Row, Col, Button } from 'antd';
 import {toCelsius, toFahrenheit} from './../utils/TemperatureConvertor';
-
-const Option = Select.Option;
+import './Temperature.css';
 
 class Temperature extends Component {
 
@@ -13,58 +10,72 @@ class Temperature extends Component {
         this.state = {
             temp: '',
             scale: 'c',
-            value: ''
+            value: '',
+            measure: 'Fahrenheit'
         }
     }
 
     render() {
+
         return (
             <div>
-                <Row >
-                    <Col>
-                        <span>Fahrenheit:</span>
+                <Row type="flex" justify="start">
+                    <Col span={16}>
+                        <span>{this.state.measure}:</span>
                     </Col>
-                    <Col>
-                        <Input
-                            width="200px"
+                </Row>
+                <Row className="top-padding-5">
+                    <Col span={2}>
+                        <InputNumber
                             onChange={this.handleChangeTemp}
                             value={this.state.temp} />
                     </Col>
-                    <Col>
+                    <Col span={14}>
                         <Select defaultValue={this.state.scale} onChange={this.handleChangeScale}>
-                            <Option value="c">to Celsius</Option>
-                            <Option value="f">to Fahrenheit</Option>
+                            <Select.Option value="c">to Celsius</Select.Option>
+                            <Select.Option value="f">to Fahrenheit</Select.Option>
                         </Select>
                     </Col>
-                    <Col>
-                        <span> = {this.state.value}</span>
+                </Row>
+                <Row className="top-padding-10">
+                    <Col span={16}>
+                        <Button shape="circle" icon="info" size="small" /> <span>Result: {this.state.value}</span>
                     </Col>
                 </Row>
             </div>
         );
     }
 
-    handleChangeScale = (e) => {
+    handleChangeScale = (value) => {
         this.setState({
-            scale: e.target.value,
-            value: this.convertTemp(e.target.value, this.state.temp)
+            scale: value,
+            value: '',
+            temp: '',
+            measure: value === 'f' ? 'Celsius' : 'Fahrenheit'
         });
     };
 
-    handleChangeTemp = (e) => {
+    handleChangeTemp = (value) => {
         this.setState({
-            temp: e.target.value,
-            value: this.convertTemp(this.state.scale, e.target.value)
+            temp: value,
+            value: this.convertTemp(this.state.scale, value)
         });
     };
 
     convertTemp = (scale, temp) => {
-        if(scale === 'c') {
-            return toCelsius(temp);
-        } else {
-            return toFahrenheit(temp);
+        if (temp === '') {
+            return;
         }
-    }
+
+        let result;
+        if(scale === 'c') {
+            result = toCelsius(temp);
+        } else {
+            result = toFahrenheit(temp);
+        }
+
+        return result.toFixed(2);
+    };
 }
 
 export default Temperature;
