@@ -7,6 +7,7 @@ class Temperature extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             temp: '',
             scale: 'c',
@@ -20,25 +21,27 @@ class Temperature extends Component {
         return (
             <div>
                 <Row type="flex" justify="start">
-                    <Col span={16}>
+                    <Col>
                         <span>{this.state.measure}:</span>
                     </Col>
                 </Row>
                 <Row className="top-padding-5">
-                    <Col span={2}>
+                    <Col>
                         <InputNumber
                             onChange={this.handleChangeTemp}
-                            value={this.state.temp} />
-                    </Col>
-                    <Col span={14}>
+                            value={this.state.temp} />&emsp;
+
                         <Select defaultValue={this.state.scale} onChange={this.handleChangeScale}>
                             <Select.Option value="c">to Celsius</Select.Option>
                             <Select.Option value="f">to Fahrenheit</Select.Option>
                         </Select>
                     </Col>
+                    <Col>
+
+                    </Col>
                 </Row>
                 <Row className="top-padding-10">
-                    <Col span={16}>
+                    <Col>
                         <Button shape="circle" icon="info" size="small" /> <span>Result: {this.state.value}</span>
                     </Col>
                 </Row>
