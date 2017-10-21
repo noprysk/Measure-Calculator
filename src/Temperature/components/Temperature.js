@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputNumber, Select, Row, Col, Button } from 'antd';
+import { InputNumber, Select, Row, Col, Button, Popover } from 'antd';
 import {toCelsius, toFahrenheit} from './../utils/TemperatureConvertor';
 import './Temperature.css';
 
@@ -17,11 +17,25 @@ class Temperature extends Component {
     }
 
     render() {
+        const infoF = (
+            <div>
+                <p>T(°F) = T(°C) × 1.8 + 32</p>
+            </div>
+        );
+
+        const infoC = (
+            <div>
+                <p>T(°C) = (T(°F) - 32) / 1.8</p>
+            </div>
+        );
 
         return (
             <div>
                 <Row type="flex" justify="start">
                     <Col>
+                        <Popover content={this.state.scale === 'c' ? infoC : infoF} title="Formula" trigger="click">
+                            <Button id="btnInfo" shape="circle" icon="info" size="small" />
+                        </Popover>&ensp;
                         <span>{this.state.measure}:</span>
                     </Col>
                 </Row>
@@ -36,13 +50,10 @@ class Temperature extends Component {
                             <Select.Option value="f">to Fahrenheit</Select.Option>
                         </Select>
                     </Col>
-                    <Col>
-
-                    </Col>
                 </Row>
                 <Row className="top-padding-10">
                     <Col>
-                        <Button shape="circle" icon="info" size="small" /> <span>Result: {this.state.value}</span>
+                        <span>Result: {this.state.value}</span>
                     </Col>
                 </Row>
             </div>
@@ -77,7 +88,11 @@ class Temperature extends Component {
             result = toFahrenheit(temp);
         }
 
-        return result.toFixed(2);
+        if(result) {
+            return result.toFixed(2);
+        } else {
+            return '';
+        }
     };
 }
 
