@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { InputNumber, Select, Row, Col, Button, Popover } from 'antd';
-import {toKM, toMile} from '../utils/DistanceConvertor';
-import './Distance.css';
+import {toKilograms, toPounds} from '../utils/WeightConvertor';
+import './Weight.css';
 
-class Distance extends Component {
+class Weight extends Component {
 
     constructor(props) {
         super(props);
@@ -12,20 +12,20 @@ class Distance extends Component {
             temp: '',
             scale: 'k',
             value: '',
-            measure: 'Miles'
+            measure: 'Pounds'
         }
     }
 
     render() {
-        const infoK = (
+        const infoKilograms = (
             <div>
-                <p>kilometers = miles * 1.609344</p>
+                <p>kg = lb * 0.45359237</p>
             </div>
         );
 
-        const infoM = (
+        const infoPounds = (
             <div>
-                <p>miles = kilometers * 0.621371192</p>
+                <p>lb = kg * 2.20462262185</p>
             </div>
         );
 
@@ -33,7 +33,7 @@ class Distance extends Component {
             <div>
                 <Row type="flex" justify="start">
                     <Col>
-                        <Popover content={this.state.scale === 'k' ? infoK : infoM} title="Formula" trigger="click">
+                        <Popover content={this.state.scale === 'k' ? infoKilograms : infoPounds} title="Formula" trigger="click">
                             <Button id="btnInfo" shape="circle" icon="info" size="small" />
                         </Popover>&ensp;
                         <span>{this.state.measure}:</span>
@@ -46,8 +46,8 @@ class Distance extends Component {
                             value={this.state.temp} />&emsp;
 
                         <Select defaultValue={this.state.scale} onChange={this.handleChangeScale}>
-                            <Select.Option value="k">to Kilometers</Select.Option>
-                            <Select.Option value="m">to Miles</Select.Option>
+                            <Select.Option value="k">to Kilograms</Select.Option>
+                            <Select.Option value="p">to Pounds</Select.Option>
                         </Select>
                     </Col>
                 </Row>
@@ -65,7 +65,7 @@ class Distance extends Component {
             scale: value,
             value: '',
             temp: '',
-            measure: value === 'k' ? 'Miles' : 'Kilometers'
+            measure: value === 'k' ? 'Pounds' : 'Kilograms'
         });
     };
 
@@ -83,9 +83,9 @@ class Distance extends Component {
 
         let result;
         if(scale === 'k') {
-            result = toKM(temp);
-        } else if (scale === 'm') {
-            result = toMile(temp);
+            result = toKilograms(temp);
+        } else if (scale === 'p') {
+            result = toPounds(temp);
         }
 
         if(result) {
@@ -96,4 +96,4 @@ class Distance extends Component {
     };
 }
 
-export default Distance;
+export default Weight;

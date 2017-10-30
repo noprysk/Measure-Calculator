@@ -4,6 +4,7 @@ import { Collapse } from 'antd';
 import './App.css';
 import Temperature from './../../Temperature/components/Temperature';
 import Distance from './../../Distance/components/Distance';
+import Weight from './../../Weight/components/Weight';
 
 const Panel = Collapse.Panel;
 
@@ -24,8 +25,10 @@ class App extends Component {
                         <Panel header="Calculate Distance" key="2">
                             <Distance />
                         </Panel>
+                        <Panel header="Calculate Weight" key="3">
+                            <Weight />
+                        </Panel>
                     </Collapse>
-
                 </div>
             </div>
         </div>
