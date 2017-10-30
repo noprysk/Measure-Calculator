@@ -3,6 +3,7 @@ import { Collapse } from 'antd';
 
 import './App.css';
 import Temperature from './../../Temperature/components/Temperature';
+import Distance from './../../Distance/components/Distance';
 
 const Panel = Collapse.Panel;
 
@@ -17,10 +18,17 @@ class App extends Component {
             <div className="row">
                 <div className="col-sm-12">
                     <Collapse defaultActiveKey={['1']}>
-                        <Panel header="Temperature conversion" key="1">
+                        <Panel header="Calculate Temperature" key="1">
                             <Temperature />
                         </Panel>
+                        <Panel header="Calculate Distance" key="2">
+                            <Distance />
+                        </Panel>
+                        <Panel header="Calculate Weight" key="3">
+
+                        </Panel>
                     </Collapse>
+
                 </div>
             </div>
         </div>
