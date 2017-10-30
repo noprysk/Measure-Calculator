@@ -3,14 +3,24 @@
   "name": "Measure calculator",
   "icons": [
     {
-      "src": "images/mcalc_64.png",
-      "type": "image/png",
-      "sizes": "64x64"
-    },
-    {
       "src": "images/mcalc_128.png",
       "type": "image/png",
       "sizes": "128x128"
+    },
+    {
+      "src": "images/mcalc_144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "images/mcalc_152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "images/mcalc_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
       "src": "images/mcalc_256.png",

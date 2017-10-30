@@ -24,9 +24,6 @@ class App extends Component {
                         <Panel header="Calculate Distance" key="2">
                             <Distance />
                         </Panel>
-                        <Panel header="Calculate Weight" key="3">
-
-                        </Panel>
                     </Collapse>
 
                 </div>

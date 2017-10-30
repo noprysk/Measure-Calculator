@@ -17,15 +17,15 @@ class Distance extends Component {
     }
 
     render() {
-        const infoF = (
+        const infoK = (
             <div>
-                <p>T(°F) = T(°C) × 1.8 + 32</p>
+                <p>kilometers = 1.609344 * miles</p>
             </div>
         );
 
-        const infoC = (
+        const infoM = (
             <div>
-                <p>T(°C) = (T(°F) - 32) / 1.8</p>
+                <p>miles = 0.621371192 * kilometers</p>
             </div>
         );
 
@@ -33,7 +33,7 @@ class Distance extends Component {
             <div>
                 <Row type="flex" justify="start">
                     <Col>
-                        <Popover content={this.state.scale === 'c' ? infoC : infoF} title="Formula" trigger="click">
+                        <Popover content={this.state.scale === 'k' ? infoK : infoM} title="Formula" trigger="click">
                             <Button id="btnInfo" shape="circle" icon="info" size="small" />
                         </Popover>&ensp;
                         <span>{this.state.measure}:</span>
