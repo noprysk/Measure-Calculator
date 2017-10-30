@@ -17,7 +17,7 @@ class App extends Component {
 
             <div className="row">
                 <div className="col-sm-12">
-                    <Collapse defaultActiveKey={['1']}>
+                    <Collapse accordion>
                         <Panel header="Calculate Temperature" key="1">
                             <Temperature />
                         </Panel>

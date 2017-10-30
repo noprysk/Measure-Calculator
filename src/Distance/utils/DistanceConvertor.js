@@ -4,5 +4,5 @@ export const toKM = (miles) => {
 };
 
 export const toMile = (km) => {
-    return 0.621371192 + km;
+    return 0.621371192 * km;
 };
