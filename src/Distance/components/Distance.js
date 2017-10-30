@@ -65,7 +65,7 @@ class Distance extends Component {
             scale: value,
             value: '',
             temp: '',
-            measure: value === 'k' ? 'Kilometers' : 'Miles'
+            measure: value === 'k' ? 'Miles' : 'Kilometers'
         });
     };
 
